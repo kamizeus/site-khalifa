@@ -1,47 +1,554 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Khalifa | IA, Automações e Sites Sob Medida</title>
+    <title>Studio Khalifa | Agentes de IA, Automações & Web High-Tech</title>
+    <meta name="description" content="Transforme sua operação com Agentes de IA autônomos, automações de processos e sites de alta conversão. Studio Khalifa.">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            amber: '#F59E0B',
+                            dark: '#07090E',
+                            card: '#0F131D',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #07090E;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+        /* Grid Background Effect */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Glassmorphism */
+        .glass {
+            background: rgba(15, 19, 29, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-hover:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(245, 158, 11, 0.15);
+        }
+    </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans antialiased">
-    <header class="max-w-5xl mx-auto px-6 py-24 text-center">
-        <span class="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-medium border border-emerald-500/20">
-            Dev & Criador de IA ⚡ Florianópolis e Região
-        </span>
-        <h1 class="mt-8 text-5xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
-            Soluções Inteligentes para Empresas e Marcas
-        </h1>
-        <p class="mt-6 text-lg text-zinc-400 max-w-2xl mx-auto">
-            Agentes de IA, automações de atendimento, sites de alta conversão e produtos digitais sob medida para escalar o seu negócio.
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://ig.me/m/studiiokhalifa" target="_blank" class="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold transition">
-                Solicitar Orçamento
+<body class="bg-grid selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Efeitos de Luz no Fundo -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+
+    <!-- Navbar Fixa -->
+    <header class="fixed top-0 w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-display font-bold text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition">
+                    K
+                </div>
+                <span class="font-display font-bold text-xl tracking-tight text-white">
+                    STUDIO <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">KHALIFA</span>
+                </span>
             </a>
-            <a href="https://www.instagram.com/studiiokhalifa/" target="_blank" class="px-8 py-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-medium transition">
-                Ver Portfólio no Instagram
-            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#servicos" class="hover:text-amber-400 transition">Soluções</a>
+                <a href="#projetos" class="hover:text-amber-400 transition">Projetos</a>
+                <a href="#processo" class="hover:text-amber-400 transition">Como Funciona</a>
+                <a href="#calculadora" class="hover:text-amber-400 transition">Simulador ROI</a>
+                <a href="#faq" class="hover:text-amber-400 transition">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Studio%20Khalifa%20e%20quero%20solicitar%20um%20or%C3%A7amento." target="_blank" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-semibold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition flex items-center gap-2">
+                    <span>Solicitar Orçamento</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
     </header>
-    <section class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-6">
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <h3 class="text-xl font-bold text-emerald-400 mb-3">🤖 Agentes de IA</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">Atendimento inteligente 24h no WhatsApp e Instagram para qualificar clientes e fechar vendas automaticamente.</p>
-        </div>
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <h3 class="text-xl font-bold text-emerald-400 mb-3">⚙️ Automações</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">Integração de sistemas e processos para eliminar tarefas repetitivas e economizar horas da sua equipa.</p>
-        </div>
-        <div class="p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <h3 class="text-xl font-bold text-emerald-400 mb-3">💻 Sites & Sistemas</h3>
-            <p class="text-zinc-400 text-sm leading-relaxed">Landing pages rápidas, modernas e produtos digitais sob medida pensados para destacar a sua marca em Floripa e no Brasil.</p>
+
+    <!-- Hero Section -->
+    <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-amber-500/30 text-amber-300 text-xs font-medium mb-8 animate-float">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                Engenharia de IA, Automações & Web de Alta Performance
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1] mb-6">
+                Escale sua empresa com <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-orange-500">Agentes de IA</span> e Sistemas Inteligentes
+            </h1>
+
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Automatizamos seu atendimento no WhatsApp 24/7, integramos seus sistemas e criamos sites ultra-rápidos que transformam visitantes em clientes.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20automatizar%20minha%20empresa%20com%20o%20Studio%20Khalifa." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-bold text-base shadow-xl shadow-amber-500/25 hover:scale-[1.02] transition flex items-center justify-center gap-2">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    Agendar Diagnóstico Gratuito
+                </a>
+                <a href="#projetos" class="w-full sm:w-auto px-8 py-4 rounded-xl glass hover:bg-white/5 text-white font-medium text-base transition flex items-center justify-center gap-2">
+                    Ver Projetos Recentes
+                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Métricas de Impacto -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-20">
+                <div class="glass p-6 rounded-2xl text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-amber-400">24/7</div>
+                    <div class="text-xs md:text-sm text-slate-400 mt-1">Atendimento Autônomo</div>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-white">-80%</div>
+                    <div class="text-xs md:text-sm text-slate-400 mt-1">Custos Operacionais</div>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-amber-400">3.8x</div>
+                    <div class="text-xs md:text-sm text-slate-400 mt-1">Mais Conversão de Leads</div>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-white">&lt; 3s</div>
+                    <div class="text-xs md:text-sm text-slate-400 mt-1">Tempo de Resposta da IA</div>
+                </div>
+            </div>
         </div>
     </section>
-    <footer class="text-center py-12 text-zinc-600 text-sm border-t border-zinc-900 mt-12">
-        © 2026 Studio Khalifa — Todos os direitos reservados.
+
+    <!-- Soluções / Serviços -->
+    <section id="servicos" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Nossas Especialidades</span>
+                <h2 class="font-display text-3xl md:text-5xl font-bold mt-2">Tecnologia de ponta para negócios ambiciosos</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass glass-hover p-8 rounded-3xl transition-all duration-300 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Agentes de IA no WhatsApp</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Assistentes treinados com os dados da sua empresa que qualificam leads, agendam reuniões no Google Calendar, tiram dúvidas e vendem 24 horas por dia.
+                    </p>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i> Integração oficial WhatsApp & Instagram</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i> Compreensão de áudio, texto e imagens</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-400"></i> Transferência inteligente para humanos</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass glass-hover p-8 rounded-3xl transition-all duration-300 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                        <i data-lucide="workflow" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Automação de Processos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Elimine tarefas manuais repetitivas. Conectamos seu CRM, planilhas, gateways de pagamento e e-mails em fluxos 100% automáticos (n8n, Make, APIs).
+                    </p>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i> Disparo de contratos e cobranças</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i> Extração de dados e relatórios automáticos</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400"></i> Sincronização com CRM em tempo real</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass glass-hover p-8 rounded-3xl transition-all duration-300 reveal">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Websites & Dashboards</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Landing pages de altíssima conversão, portais corporativos e sistemas web sob medida com design premium, carregamento instantâneo e SEO técnico.
+                    </p>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Design exclusivo e 100% responsivo</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Hospedagem global de alta velocidade</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Painéis administrativos modernos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Projetos (Portfólio c/ Filtro) -->
+    <section id="projetos" class="py-24 px-6 bg-slate-950/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+                <div>
+                    <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Portfólio & Cases</span>
+                    <h2 class="font-display text-3xl md:text-5xl font-bold mt-2">Projetos em Destaque</h2>
+                </div>
+                <!-- Botões de Filtro -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterProjects('all')" class="filter-btn active-filter px-4 py-2 rounded-xl text-xs font-semibold bg-amber-400 text-slate-950 transition" data-filter="all">Todos</button>
+                    <button onclick="filterProjects('ia')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass text-slate-300 hover:text-white transition" data-filter="ia">Agentes de IA</button>
+                    <button onclick="filterProjects('automacao')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass text-slate-300 hover:text-white transition" data-filter="automacao">Automações</button>
+                    <button onclick="filterProjects('web')" class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass text-slate-300 hover:text-white transition" data-filter="web">Web & SaaS</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card glass glass-hover rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 reveal" data-category="ia">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 p-6 flex flex-col justify-between border-b border-white/5">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-amber-400/20 text-amber-300 w-fit">Agente de IA</span>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="message-square-Code" class="w-8 h-8 text-amber-400"></i>
+                                <span class="font-display font-bold text-lg">SDR Autônomo para Clínicas</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                IA integrada ao WhatsApp que atende pacientes em 3 segundos, tira dúvidas sobre procedimentos e agenda consultas direto na agenda médica.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">OpenAI GPT-4o</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">WhatsApp API</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">Google Calendar</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between text-xs text-amber-400 font-semibold">
+                        <span>Resultado: +64% em agendamentos</span>
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card glass glass-hover rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 reveal" data-category="automacao">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-purple-500/20 via-slate-900 to-slate-950 p-6 flex flex-col justify-between border-b border-white/5">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-purple-400/20 text-purple-300 w-fit">Automação B2B</span>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="cpu" class="w-8 h-8 text-purple-400"></i>
+                                <span class="font-display font-bold text-lg">Extrator & Prospecção Inteligente</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                Fluxo automatizado que capta leads qualificados por segmento, enriquece dados e inicia abordagem personalizada integrada ao CRM comercial.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">n8n Workflows</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">Google Maps API</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">CRM Webhook</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between text-xs text-purple-400 font-semibold">
+                        <span>Resultado: 1.200 leads/mês no piloto automático</span>
+                        <i data-lucide="zap" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card glass glass-hover rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 reveal" data-category="web">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-emerald-500/20 via-slate-900 to-slate-950 p-6 flex flex-col justify-between border-b border-white/5">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-400/20 text-emerald-300 w-fit">Web High-Conversion</span>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="layout" class="w-8 h-8 text-emerald-400"></i>
+                                <span class="font-display font-bold text-lg">Ecossistema Digital & Dashboard</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                Plataforma web com nota 100 no Google PageSpeed, área de membros e painel de métricas em tempo real para acompanhamento de vendas.
+                            </p>
+                            <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">Tailwind CSS</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">Vercel Edge</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white/5">Analytics AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between text-xs text-emerald-400 font-semibold">
+                        <span>Resultado: Carregamento em 0.6s</span>
+                        <i data-lucide="gauge" class="w-4 h-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador Interativo de Economia / ROI -->
+    <section id="calculadora" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto glass rounded-3xl p-8 md:p-12 border border-amber-500/20 reveal">
+            <div class="text-center mb-10">
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Simulador Interativo</span>
+                <h2 class="font-display text-2xl md:text-4xl font-bold mt-2">Quanto tempo e dinheiro sua empresa pode economizar?</h2>
+                <p class="text-slate-400 text-sm mt-2">Arraste o controle abaixo de acordo com o volume diário de atendimentos da sua equipe.</p>
+            </div>
+
+            <div class="space-y-8">
+                <div>
+                    <div class="flex justify-between text-sm font-medium mb-3">
+                        <span class="text-slate-300">Atendimentos/Leads recebidos por dia:</span>
+                        <span id="leadsValue" class="text-amber-400 font-display font-bold text-xl">40 leads/dia</span>
+                    </div>
+                    <input id="leadsRange" type="range" min="10" max="300" step="10" value="40" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400" oninput="updateROI()">
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6 pt-4">
+                    <div class="bg-slate-950/80 border border-white/5 p-6 rounded-2xl text-center">
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Horas poupadas por mês</div>
+                        <div id="hoursSaved" class="font-display text-3xl md:text-4xl font-bold text-white mt-2">100h /mês</div>
+                        <div class="text-xs text-emerald-400 mt-1">Redução de tarefas repetitivas</div>
+                    </div>
+                    <div class="bg-slate-950/80 border border-amber-500/20 p-6 rounded-2xl text-center">
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Aumento estimado em conversões</div>
+                        <div id="extraLeads" class="font-display text-3xl md:text-4xl font-bold text-amber-400 mt-2">+360 vendas/ano</div>
+                        <div class="text-xs text-slate-400 mt-1">Com resposta imediata em 3 segundos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona (Processo em 4 etapas) -->
+    <section id="processo" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Metodologia</span>
+                <h2 class="font-display text-3xl md:text-5xl font-bold mt-2">Do diagnóstico ao lançamento em tempo recorde</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-2xl relative reveal">
+                    <span class="font-display text-5xl font-bold text-white/5 absolute top-4 right-6">01</span>
+                    <h3 class="font-display text-lg font-bold text-amber-400 mb-2">Diagnóstico</h3>
+                    <p class="text-slate-400 text-sm">Mapeamos os gargalos do seu atendimento e processos repetitivos que tomam tempo da sua equipe.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl relative reveal">
+                    <span class="font-display text-5xl font-bold text-white/5 absolute top-4 right-6">02</span>
+                    <h3 class="font-display text-lg font-bold text-amber-400 mb-2">Arquitetura & IA</h3>
+                    <p class="text-slate-400 text-sm">Desenvolvemos o cérebro do seu Agente de IA, fluxos de automação ou estrutura visual do site.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl relative reveal">
+                    <span class="font-display text-5xl font-bold text-white/5 absolute top-4 right-6">03</span>
+                    <h3 class="font-display text-lg font-bold text-amber-400 mb-2">Testes & Integração</h3>
+                    <p class="text-slate-400 text-sm">Conectamos tudo ao seu WhatsApp, CRM e agenda com baterias rigorosas de validação.</p>
+                </div>
+                <div class="glass p-6 rounded-2xl relative reveal">
+                    <span class="font-display text-5xl font-bold text-white/5 absolute top-4 right-6">04</span>
+                    <h3 class="font-display text-lg font-bold text-amber-400 mb-2">Escala & Suporte</h3>
+                    <p class="text-slate-400 text-sm">Sua operação roda 24/7 com monitoramento contínuo e otimizações para máxima conversão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Perguntas Frequentes) -->
+    <section id="faq" class="py-24 px-6 border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-14 reveal">
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Tire suas dúvidas</span>
+                <h2 class="font-display text-3xl md:text-5xl font-bold mt-2">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- Pergunta 1 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-display font-semibold text-lg hover:text-amber-400 transition">
+                        <span>O Agente de IA parece um robô engessado no WhatsApp?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                        De forma alguma! Diferente dos chatbots antigos de "digite 1 ou 2", nossos Agentes de IA usam linguagem natural avançada. Eles compreendem áudios, respondem de forma humanizada seguindo o tom de voz da sua marca e transferem para um atendente humano sempre que necessário.
+                    </div>
+                </div>
+
+                <!-- Pergunta 2 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-display font-semibold text-lg hover:text-amber-400 transition">
+                        <span>Qual é o prazo médio de entrega de um projeto?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                        Landing pages de alta conversão ficam prontas entre 5 a 10 dias úteis. Já a implementação de Agentes de IA personalizados e automações completas leva de 7 a 15 dias úteis, dependendo das integrações com seu sistema atual.
+                    </div>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-display font-semibold text-lg hover:text-amber-400 transition">
+                        <span>Preciso ter conhecimento técnico para gerenciar depois?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                        Zero! Entregamos toda a solução chave-na-mão (turnkey), configurada e rodando. Além disso, fornecemos treinamento prático para sua equipe e suporte próximo para qualquer ajuste futuro.
+                    </div>
+                </div>
+
+                <!-- Pergunta 4 -->
+                <div class="glass rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between font-display font-semibold text-lg hover:text-amber-400 transition">
+                        <span>Como solicito um orçamento personalizado?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                        Basta clicar em qualquer botão de orçamento desta página para falar diretamente conosco no WhatsApp. Fazemos uma rápida análise gratuita do seu cenário e enviamos uma proposta sob medida para a sua necessidade.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-6">
+        <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-purple-500/20 border border-amber-500/30 p-10 md:p-16 text-center reveal">
+            <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Pronto para colocar sua operação no próximo nível?</h2>
+            <p class="text-slate-300 max-w-xl mx-auto mb-8">
+                Fale agora com o Studio Khalifa e descubra como implementar IA e automações sob medida no seu negócio.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20studiokhalifa.com.br%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold transition shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Falar no WhatsApp Agora
+                </a>
+                <a href="https://instagram.com/studiiokhalifa" target="_blank" class="px-8 py-4 rounded-xl glass hover:bg-white/10 text-white font-semibold transition flex items-center justify-center gap-2">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                    Seguir @studiiokhalifa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 px-6 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 font-display font-bold text-white">
+                <span class="w-6 h-6 rounded bg-amber-400 text-slate-950 flex items-center justify-center text-xs">K</span>
+                STUDIO KHALIFA
+            </div>
+            <p>© 2026 Studio Khalifa — Todos os direitos reservados.</p>
+            <div class="flex gap-6">
+                <a href="https://instagram.com/studiiokhalifa" target="_blank" class="hover:text-amber-400 transition">Instagram</a>
+                <a href="https://wa.me/5500000000000" target="_blank" class="hover:text-amber-400 transition">WhatsApp</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Botão Flutuante de WhatsApp -->
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Studio%20Khalifa!" target="_blank" aria-label="Falar no WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center shadow-2xl shadow-emerald-500/40 hover:scale-110 transition">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Inicializa ícones
+        lucide.createIcons();
+
+        // Animação ao rolar a página (Scroll Reveal)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Filtro da seção de Projetos
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-amber-400 text-slate-950 transition';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-xl text-xs font-semibold glass text-slate-300 hover:text-white transition';
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Calculadora de ROI
+        function updateROI() {
+            const leads = parseInt(document.getElementById('leadsRange').value);
+            document.getElementById('leadsValue').innerText = leads + ' leads/dia';
+            
+            const hours = Math.round(leads * 2.5);
+            const extraSales = Math.round(leads * 9);
+
+            document.getElementById('hoursSaved').innerText = hours + 'h /mês';
+            document.getElementById('extraLeads').innerText = '+' + extraSales + ' vendas/ano';
+        }
+
+        // Acordeão do FAQ
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
 </body>
 </html>
